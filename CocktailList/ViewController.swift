@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ViewController: UIViewController {
     
@@ -24,9 +25,7 @@ class ViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        //layout.minimumInteritemSpacing = 0.8
-        //layout.minimumLineSpacing = 8
-        layout.sectionInset = .init(top: 0, left: 4, bottom: 0, right: 4)
+        layout.sectionInset = .init(top: 0, left: 4, bottom: 0, right: 8)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.dataSource = self
@@ -39,6 +38,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         setup()
+        
+        let layout = TagFlowLayout()
+        collectionView.collectionViewLayout = layout
         
         networkManager.fetchCocktails { [weak self] cocktails in
             self?.cocktails = cocktails
@@ -61,7 +63,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cocktails.drinks.count
     }
-//    загуглить как переиспользуется how to reuse
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.roundCellIdentifier, for: indexPath) as? RoundCollectionViewCell else { return UICollectionViewCell() }
         cell.configure(cocktails.drinks[indexPath.item])

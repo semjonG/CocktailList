@@ -16,6 +16,7 @@
 		0402D0CB27F7403000C5CA1F /* RoundCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402D0CA27F7403000C5CA1F /* RoundCollectionViewCell.swift */; };
 		0402D0CD27F76BBE00C5CA1F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402D0CC27F76BBE00C5CA1F /* NetworkManager.swift */; };
 		0402D0CF27F771A300C5CA1F /* CocktailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402D0CE27F771A300C5CA1F /* CocktailModel.swift */; };
+		0402D0D227F7BBE700C5CA1F /* LabelsFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402D0D127F7BBE700C5CA1F /* LabelsFlowLayout.swift */; };
 		51158442156A57841D91107F /* libPods-CocktailList.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBD2B26E0FCCD22BCE296E9 /* libPods-CocktailList.a */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		0402D0CA27F7403000C5CA1F /* RoundCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCollectionViewCell.swift; sourceTree = "<group>"; };
 		0402D0CC27F76BBE00C5CA1F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		0402D0CE27F771A300C5CA1F /* CocktailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailModel.swift; sourceTree = "<group>"; };
+		0402D0D127F7BBE700C5CA1F /* LabelsFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsFlowLayout.swift; sourceTree = "<group>"; };
 		15EB8472EB3B8437133B3B1E /* Pods-CocktailList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocktailList.release.xcconfig"; path = "Target Support Files/Pods-CocktailList/Pods-CocktailList.release.xcconfig"; sourceTree = "<group>"; };
 		1CFEEABF660E8DB24CEA792E /* Pods-CocktailList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocktailList.debug.xcconfig"; path = "Target Support Files/Pods-CocktailList/Pods-CocktailList.debug.xcconfig"; sourceTree = "<group>"; };
 		DEBD2B26E0FCCD22BCE296E9 /* libPods-CocktailList.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CocktailList.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,18 +71,35 @@
 		0402D0B527F73F5700C5CA1F /* CocktailList */ = {
 			isa = PBXGroup;
 			children = (
-				0402D0B627F73F5700C5CA1F /* AppDelegate.swift */,
-				0402D0B827F73F5700C5CA1F /* SceneDelegate.swift */,
+				0402D0D327F7C3FC00C5CA1F /* App */,
+				0402D0D027F7962D00C5CA1F /* Network */,
 				0402D0BA27F73F5700C5CA1F /* ViewController.swift */,
 				0402D0CA27F7403000C5CA1F /* RoundCollectionViewCell.swift */,
-				0402D0CC27F76BBE00C5CA1F /* NetworkManager.swift */,
-				0402D0CE27F771A300C5CA1F /* CocktailModel.swift */,
+				0402D0D127F7BBE700C5CA1F /* LabelsFlowLayout.swift */,
 				0402D0BC27F73F5700C5CA1F /* Main.storyboard */,
 				0402D0BF27F73F5A00C5CA1F /* Assets.xcassets */,
 				0402D0C127F73F5A00C5CA1F /* LaunchScreen.storyboard */,
 				0402D0C427F73F5A00C5CA1F /* Info.plist */,
 			);
 			path = CocktailList;
+			sourceTree = "<group>";
+		};
+		0402D0D027F7962D00C5CA1F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0402D0CC27F76BBE00C5CA1F /* NetworkManager.swift */,
+				0402D0CE27F771A300C5CA1F /* CocktailModel.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		0402D0D327F7C3FC00C5CA1F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				0402D0B627F73F5700C5CA1F /* AppDelegate.swift */,
+				0402D0B827F73F5700C5CA1F /* SceneDelegate.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 		31C5943198BECC200E3FE621 /* Pods */ = {
@@ -197,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0402D0D227F7BBE700C5CA1F /* LabelsFlowLayout.swift in Sources */,
 				0402D0BB27F73F5700C5CA1F /* ViewController.swift in Sources */,
 				0402D0CF27F771A300C5CA1F /* CocktailModel.swift in Sources */,
 				0402D0B727F73F5700C5CA1F /* AppDelegate.swift in Sources */,
