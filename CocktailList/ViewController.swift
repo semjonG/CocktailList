@@ -11,6 +11,7 @@ import Alamofire
 class ViewController: UIViewController {
     
     private let networkManager = NetworkManager()
+    private let selectedIndexes = NSMutableSet()
 
     private enum Constants {
         static let roundCellIdentifier = "roundCellIdentifier"
@@ -25,7 +26,7 @@ class ViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.sectionInset = .init(top: 0, left: 4, bottom: 0, right: 8)
+        layout.sectionInset = .init(top: 0, left: 8, bottom: 0, right: -8)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.dataSource = self
@@ -66,14 +67,23 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.roundCellIdentifier, for: indexPath) as? RoundCollectionViewCell else { return UICollectionViewCell() }
+        
+        selectedIndexes.contains(indexPath) == true ? cell.tapped(true) : cell.tapped(false)
         cell.configure(cocktails.drinks[indexPath.item])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? RoundCollectionViewCell else { return }
-        collectionView.reloadItems(at: [indexPath])
-        cell.tapped()
+        
+        if selectedIndexes.contains(indexPath) {
+            selectedIndexes.remove(indexPath)
+            cell.tapped(false)
+        } else {
+            selectedIndexes.add(indexPath)
+            cell.tapped(true)
+        }
+        cell.configure(cocktails.drinks[indexPath.item])
     }
 }
 

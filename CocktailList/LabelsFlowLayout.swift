@@ -23,6 +23,7 @@ class Row {
         let padding = 8
         var offset = padding
         for attribute in attributes {
+            attribute.frame.size.width = attribute.frame.size.width - 4
             attribute.frame.origin.x = CGFloat(offset)
             offset += Int(attribute.frame.width + spacing)
         }

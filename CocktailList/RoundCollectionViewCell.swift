@@ -19,7 +19,13 @@ class RoundCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    fileprivate let gradientLayer = CAGradientLayer()
     private var isTapped = false
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.gradientLayer.removeFromSuperlayer()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,11 +51,11 @@ class RoundCollectionViewCell: UICollectionViewCell {
             titleLabel.text = drink.strDrink
         }
         
-        backgroundColor = isTapped ? .systemPink : .systemGray3
+        isTapped ? addGradient(with: .red, and: .purple) : addGradient(with: .systemGray3, and: .systemGray3)
     }
     
-    func tapped() {
-       isTapped = !isTapped
+    func tapped(_ isActive: Bool) {
+       isTapped = isActive
     } 
 }
 
@@ -57,7 +63,6 @@ class RoundCollectionViewCell: UICollectionViewCell {
 private extension RoundCollectionViewCell {
     
     func setup() {
-        backgroundColor = .systemGray3
         
         layer.masksToBounds = true
         layer.cornerRadius = 10
@@ -72,17 +77,17 @@ private extension RoundCollectionViewCell {
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
+    
+    func addGradient(with firstColor: UIColor, and secondColor: UIColor) {
+        clipsToBounds = true
+        
+        gradientLayer.colors = [firstColor.cgColor, secondColor.cgColor]
+        gradientLayer.frame = self.bounds
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
 }
 
-extension UIView {
-      func addGradientBackground(firstColor: UIColor, secondColor: UIColor) {
-          clipsToBounds = true
-          let gradientLayer = CAGradientLayer()
-          gradientLayer.colors = [firstColor.cgColor, secondColor.cgColor]
-          gradientLayer.frame = self.bounds
-          gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-          gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-          print(gradientLayer.frame)
-          self.layer.insertSublayer(gradientLayer, at: 0)
-      }
-  }
+     
+  
