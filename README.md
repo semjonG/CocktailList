@@ -16,6 +16,7 @@
 
 ## Выполнено
 - MVC
+- UIKit
 - Alamofire (Decodable, get запрос) 
   
   <img width="256" alt="example" src="https://raw.githubusercontent.com/semjonG/CocktailList/main/screenShot1.png"><br>
